@@ -7,7 +7,8 @@ Critérios avaliadas:
 
 ### Desejáveis
 - Esquema Estrela
-- Criação de visuais com indicadores além dos requisitados.
+- Criação de visuais com indicadores além dos requisitados.  
+*https://github.com/marcossa/Teste-Analista-de-Dados-MESHA/blob/Teste-Mesha/docs/Teste-Analista-de-Dados-MESHA-marcossa.pdf*  
 - SQL (Caso deseje modelar os dados em algum banco)
 
 
