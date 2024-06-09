@@ -152,20 +152,22 @@ Optei então pela segmentação do arquivo em arquivos menores correspondentes �
 Mesmo após essas intervenções, apesar de melhorria no manejo dos arquivos, a lentidão na carga de dados persistiu.
 
 
-### Algumas anotações
-    8.508 participantes faltaram no primeiro dia mas estiveram presentes ou foram eliminados no segundo dia
-  168.161 participantes estiveram presentes ou foram eliminados no primeiro dia mas faltaram no segundo dia
-  -------
-  176.669 participantes faltaram a pelo menos um dos dias
-3.016.082 participantes faltaram em ambos os dias
+### Algumas anotações  
+    8.508 participantes faltaram no primeiro dia mas estiveram presentes ou foram eliminados no segundo dia  
+  168.161 participantes estiveram presentes ou foram eliminados no primeiro dia mas faltaram no segundo dia  
+  176.669 participantes faltaram a pelo menos um dos dias  
+3.016.082 participantes faltaram em ambos os dias  
 
 
+### Resolvendo problemas de performance
 Refiz a segmentação desta vez predefinindo as colunas e mesclando as seções das Provas Objetiva e Redação
 - Dados do Participante
 - Dados da Escola
 - Dados do Local de Aplicação da Prova
 - Dados das Provas (Prova Objetiva e Redação)
 - Dados do Questionário Sócio-Econômico
+
+
 O arquivo Parquet correspondente às provas teve uma redução significativa em seu tamanho, passando de 360+43 MB para 67 MB
 
 Uma análise exploratória de notas pelo perfil socioeconômico pode revelar novos insights
