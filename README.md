@@ -65,29 +65,29 @@ Critérios avaliadas:
 - **Número total de inscritos:** `5.783.109`
 - **Número de ausentes no primeiro dia de prova:** `3.184.243`
 - **Número de ausentes no segundo dia de prova:** `3.024.590`
-- **Percentual de ausentes em pelo menos um dos dias de prova:** `55.21%`
-`Média geral: 530.55`
+- **Percentual de ausentes em pelo menos um dos dias de prova:** `55.21%`  
+- **Média geral:** `530.55`
 
-- **Média geral por área do conhecimento:**
-`NU_NOTA_CN         491.743250`
-`NU_NOTA_CH         515.977130`
-`NU_NOTA_LC         527.658998`
-`NU_NOTA_MT         522.484363`
-`NU_NOTA_REDACAO    594.866780`
+- **Média geral por área do conhecimento:**  
+`NU_NOTA_CN         491.743250`  
+`NU_NOTA_CH         515.977130`  
+`NU_NOTA_LC         527.658998`  
+`NU_NOTA_MT         522.484363`  
+`NU_NOTA_REDACAO    594.866780`  
 
 - **Média geral por etnia:**
-*TP_COR_RACA*
-`0    539.359489`
-`1    559.545128`
-`2    505.093910`
-`3    512.981683`
-`4    528.601207`
-`5    480.225743`
+*TP_COR_RACA*  
+`0    539.359489`  
+`1    559.545128`  
+`2    505.093910`  
+`3    512.981683`  
+`4    528.601207`  
+`5    480.225743`  
 
 - **Média geral por sexo:**
-*TP_SEXO*
-`F    524.607044`
-`M    539.695145`
+*TP_SEXO*  
+`F    524.607044`  
+`M    539.695145`  
 
 - **Ranking das 10 escolas com as maiores médias de notas:**
 
