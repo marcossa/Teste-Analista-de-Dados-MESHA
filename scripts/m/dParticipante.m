@@ -1,0 +1,25 @@
+let
+    Fonte = Parquet.Document(File.Contents("file:///D:/microdados_enem_2020/DADOS/microdados_enem_2020_participante.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null]),
+    #"Tipos Alterados" = Table.TransformColumnTypes(Fonte,{{"NU_INSCRICAO", type text}, {"NU_ANO", Int64.Type}, {"TP_FAIXA_ETARIA", Int64.Type}, {"TP_SEXO", type text}, {"TP_ESTADO_CIVIL", Int64.Type}, {"TP_COR_RACA", Int64.Type}, {"TP_NACIONALIDADE", Int64.Type}, {"TP_ST_CONCLUSAO", Int64.Type}, {"TP_ANO_CONCLUIU", Int64.Type}, {"TP_ESCOLA", Int64.Type}, {"TP_ENSINO", Int64.Type}, {"IN_TREINEIRO", Int64.Type}}, "en-US"),
+    #"Consultas Mescladas1" = Table.NestedJoin(#"Tipos Alterados", {"TP_FAIXA_ETARIA"}, cFaixaEtaria, {"TP_FAIXA_ETARIA"}, "cFaixaEtaria", JoinKind.LeftOuter),
+    #"cFaixaEtaria Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas1", "cFaixaEtaria", {"Faixa Etária"}, {"Faixa Etária"}),
+    #"Consultas Mescladas2" = Table.NestedJoin(#"cFaixaEtaria Expandido", {"TP_SEXO"}, cSexo, {"TP_SEXO"}, "cSexo", JoinKind.LeftOuter),
+    #"cSexo Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas2", "cSexo", {"Sexo"}, {"Sexo"}),
+    #"Consultas Mescladas3" = Table.NestedJoin(#"cSexo Expandido", {"TP_ESTADO_CIVIL"}, cEstadoCivil, {"TP_ESTADO_CIVIL"}, "cEstadoCivil", JoinKind.LeftOuter),
+    #"cEstadoCivil Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas3", "cEstadoCivil", {"Estado Civil"}, {"Estado Civil"}),
+    #"Consultas Mescladas4" = Table.NestedJoin(#"cEstadoCivil Expandido", {"TP_COR_RACA"}, cCorRaca, {"TP_COR_RACA"}, "cCorRaca", JoinKind.LeftOuter),
+    #"cCorRaca Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas4", "cCorRaca", {"Cor/Raça"}, {"Cor/Raça"}),
+    #"Consultas Mescladas" = Table.NestedJoin(#"cCorRaca Expandido", {"TP_NACIONALIDADE"}, cNacionalidade, {"TP_NACIONALIDADE"}, "cNacionalidade", JoinKind.LeftOuter),
+    #"cNacionalidade Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "cNacionalidade", {"Nacionalidade"}, {"Nacionalidade"}),
+    #"Consultas Mescladas5" = Table.NestedJoin(#"cNacionalidade Expandido", {"TP_ST_CONCLUSAO"}, cSituacaoEnsinoMedio, {"TP_ST_CONCLUSAO"}, "cEnsinoMedio", JoinKind.LeftOuter),
+    #"cSituacaoEnsinoMedio Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas5", "cEnsinoMedio", {"Situação Ensino Médio"}, {"Situação Ensino Médio"}),
+    #"Consultas Mescladas6" = Table.NestedJoin(#"cSituacaoEnsinoMedio Expandido", {"TP_ANO_CONCLUIU"}, cConclusaoEnsinoMedio, {"TP_ANO_CONCLUIU"}, "cConclusaoEnsinoMedio", JoinKind.LeftOuter),
+    #"cConclusaoEnsinoMedio Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas6", "cConclusaoEnsinoMedio", {"Conclusão Ensino Médio"}, {"Conclusão Ensino Médio"}),
+    #"Consultas Mescladas7" = Table.NestedJoin(#"cConclusaoEnsinoMedio Expandido", {"TP_ESCOLA"}, cTipoEscola, {"TP_ESCOLA"}, "cTipoEscola", JoinKind.LeftOuter),
+    #"cTipoEscola Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas7", "cTipoEscola", {"Tipo Escola Ensino Médio"}, {"Tipo Escola Ensino Médio"}),
+    #"Consultas Mescladas8" = Table.NestedJoin(#"cTipoEscola Expandido", {"TP_ENSINO"}, cTipoEnsino, {"TP_ENSINO"}, "cTipoEnsino", JoinKind.LeftOuter),
+    #"cTipoEnsino Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas8", "cTipoEnsino", {"Tipo Instituição Ensino Médio"}, {"Tipo Instituição Ensino Médio"}),
+    #"Consultas Mescladas9" = Table.NestedJoin(#"cTipoEnsino Expandido", {"IN_TREINEIRO"}, cTreineiro, {"IN_TREINEIRO"}, "cTreineiro", JoinKind.LeftOuter),
+    #"cTreineiro Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas9", "cTreineiro", {"Treineiro"}, {"Treineiro"})
+in
+    #"cTreineiro Expandido"
